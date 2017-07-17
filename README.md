@@ -179,6 +179,33 @@ ci.startBuild({
 });
 ```  
 
+### startBuildTag
+
+Triggers a new build with no branch, returns a summary of the build.
+
+#### Example Usage
+
+```javascript
+ci.startBuildTag({
+  username: "jpstevens",
+  project: "circleci",
+  body:
+    parallel: null
+    revision: null
+    tag: "v0.1.0"
+    build_parameters:
+      NODE_ENV: "production"
+}).then(function(build){
+  console.log(build);
+});
+```
+
+#### Options
+- **username** [required] - The username for the project
+- **project** [required] - The project (repo) name
+- **options** [optional] - Additional parameters you can pass in
+
+
 ### cancelBuild
 
 Cancels the build, returns a summary of the build.
