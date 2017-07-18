@@ -30,6 +30,9 @@ class CircleCI
   startBuild: (opts) ->
     @request.process @routes['startBuild'], opts
 
+  startBuildTag: (opts) ->
+    @request.process @routes['startBuildTag'], opts
+
   cancelBuild: (opts) ->
     @request.process @routes['cancelBuild'], opts
 
