@@ -39,6 +39,8 @@ class CircleCIRequest
     config.json = true
     if data and data.body
       config.body = data.body
+    if data and data.tag
+      config.body.tag = data.tag
     config
 
   buildQueryObject: (availableOptions, data) ->
