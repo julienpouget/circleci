@@ -44,6 +44,10 @@
       return this.request.process(this.routes['startBuild'], opts);
     };
 
+    CircleCI.prototype.startBuildTag = function(opts) {
+      return this.request.process(this.routes['startBuildTag'], opts);
+    };
+
     CircleCI.prototype.cancelBuild = function(opts) {
       return this.request.process(this.routes['cancelBuild'], opts);
     };
