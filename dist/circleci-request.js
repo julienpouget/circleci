@@ -68,6 +68,9 @@
       if (data && data.body) {
         config.body = data.body;
       }
+      if (data && data.tag) {
+        config.body.tag = data.tag;
+      }
       return config;
     };
 
