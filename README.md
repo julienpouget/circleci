@@ -1,7 +1,7 @@
 # CircleCI
 
-[![Build Status](https://secure.travis-ci.org/jpstevens/circleci.png?branch=master)](https://travis-ci.org/jpstevens/circleci)
-[![Dependencies](https://david-dm.org/jpstevens/circleci.png)](https://david-dm.org/jpstevens/circleci)
+[![CircleCI](https://circleci.com/gh/drazisil/circleci.svg?style=shield)](https://circleci.com/gh/drazisil/circleci)
+[![Dependencies](https://david-dm.org/drazisil/circleci.png)](https://david-dm.org/drazisil/circleci)
 ![Downloads/month](http://img.shields.io/npm/dm/circleci.svg)
 
 A Node.js API client for [CircleCI](http://circleci.com)
