@@ -7,6 +7,7 @@ describe "setEnvVar", ->
     @config =
       username: process.env.CIRCLE_USER
       project: process.env.CIRCLE_PROJECT
+      vcsType: process.env.CIRCLE_VCSTYPE
       body:
         name: 'TEST_ENV_VAR'
         value: 'TEST_ENV_VALUE'

@@ -1,6 +1,6 @@
 request = require "request"
 
-baseUrl = "https://circleci.com/api/v1/project"
+baseUrl = "https://circleci.com/api/v1.1/project"
 projectUrl = "#{baseUrl}/#{process.env.CIRCLE_USER}/#{process.env.CIRCLE_PROJECT}"
 
 exports.createBuild = (callback) ->

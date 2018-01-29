@@ -17,7 +17,7 @@
   },
   "getBuilds": {
     "method": "GET",
-    "path": "\/project\/:username\/:project",
+    "path": "\/project\/:vcsType\/:username\/:project",
     "options": [
       "limit",
       "offset",
@@ -26,7 +26,7 @@
   },
   "getBranchBuilds": {
     "method": "GET",
-    "path": "\/project\/:username\/:project\/tree\/:branch",
+    "path": "\/project\/:vcsType\/:username\/:project\/tree\/:branch",
     "options": [
       "limit",
       "offset",
@@ -34,51 +34,51 @@
     ]
   },
   "getBuild": {
-    "path": "\/project\/:username\/:project\/:build_num",
+    "path": "\/project\/:vcsType\/:username\/:project\/:build_num",
     "method": "GET"
   },
   "startBuild": {
-    "path": "\/project\/:username\/:project\/tree\/:branch",
+    "path": "\/project\/:vcsType\/:username\/:project\/tree\/:branch",
     "method": "POST"
   },
   "startBuildTag": {
-    "path": "\/project\/:username\/:project",
+    "path": "\/project\/:vcsType\/:username\/:project",
     "method": "POST"
   },
   "cancelBuild": {
-    "path": "\/project\/:username\/:project\/:build_num\/cancel",
+    "path": "\/project\/:vcsType\/:username\/:project\/:build_num\/cancel",
     "method": "POST"
   },
   "retryBuild": {
-    "path": "\/project\/:username\/:project\/:build_num\/retry",
+    "path": "\/project\/:vcsType\/:username\/:project\/:build_num\/retry",
     "method": "POST"
   },
   "getBuildArtifacts": {
-    "path": "\/project\/:username\/:project\/:build_num\/artifacts",
+    "path": "\/project\/:vcsType\/:username\/:project\/:build_num\/artifacts",
     "method": "GET"
   },
   "clearBuildCache": {
-    "path": "\/project\/:username\/:project\/build-cache",
+    "path": "\/project\/:vcsType\/:username\/:project\/build-cache",
     "method": "DELETE"
   },
   "getTestMetadata": {
-    "path": "\/project\/:username\/:project\/:build_num\/tests",
+    "path": "\/project\/:vcsType\/:username\/:project\/:build_num\/tests",
     "method": "GET"
   },
   "getEnvVars": {
-    "path": "\/project\/:username\/:project\/envvar",
+    "path": "\/project\/:vcsType\/:username\/:project\/envvar",
     "method": "GET"
   },
   "getEnvVar": {
-    "path": "\/project\/:username\/:project\/envvar\/:name",
+    "path": "\/project\/:vcsType\/:username\/:project\/envvar\/:name",
     "method": "GET"
   },
   "setEnvVar": {
-    "path": "\/project\/:username\/:project\/envvar",
+    "path": "\/project\/:vcsType\/:username\/:project\/envvar",
     "method": "POST"
   },
   "deleteEnvVar": {
-    "path": "\/project\/:username\/:project\/envvar\/:name",
+    "path": "\/project\/:vcsType\/:username\/:project\/envvar\/:name",
     "method": "DELETE"
   }
 }

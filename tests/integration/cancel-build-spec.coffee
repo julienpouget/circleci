@@ -9,6 +9,7 @@ describe "cancelBuild", ->
       @config =
         username: process.env.CIRCLE_USER
         project: process.env.CIRCLE_PROJECT
+        vcsType: process.env.CIRCLE_VCSTYPE
         build_num: build_num
       next()
 

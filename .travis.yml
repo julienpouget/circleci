@@ -14,3 +14,4 @@ env:
     - secure: Z8erqjVrrwFEa8d8UXcuaTOPlEw/sf5FTEZ0rzZgb3rMdfFikb0EhfQ99WrBvgNEKczEHc0LtrepEr5/A4GCXXdr6Amuj9+Edlg04+cBbrRJwACYoydOpFppiMg718Iq++VxCEReIlRBJLn4VSPbc2l83ylcYmg++ItnCSl/hyo=
     - CIRCLE_USER=jpstevens
     - CIRCLE_PROJECT=circleci
+    - CIRCLE_VCSTYPE=github

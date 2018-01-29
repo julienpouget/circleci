@@ -7,6 +7,7 @@ describe "getBuilds", ->
     @config =
       username: process.env.CIRCLE_USER
       project: process.env.CIRCLE_PROJECT
+      vcsType: process.env.CIRCLE_VCSTYPE
       limit: 1
 
   it "returns an array of builds for a given project", (done) ->

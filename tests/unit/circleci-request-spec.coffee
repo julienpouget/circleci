@@ -49,19 +49,19 @@ describe "CircleCI Request", ->
 
     it "generates the base API url with an auth token by default", ->
       expect @request.buildUrl()
-      .to.equal "https://circleci.com/api/v1?circle-token=example-token"
+      .to.equal "https://circleci.com/api/v1.1?circle-token=example-token"
 
     it "can build a URL from a path", ->
       expect @request.buildUrl("projects")
-      .to.equal "https://circleci.com/api/v1/projects?circle-token=example-token"
+      .to.equal "https://circleci.com/api/v1.1/projects?circle-token=example-token"
 
     it "can build a URL from a path with query params", ->
       expect @request.buildUrl("projects", { limit: 10 })
-      .to.equal "https://circleci.com/api/v1/projects?limit=10&circle-token=example-token"
+      .to.equal "https://circleci.com/api/v1.1/projects?limit=10&circle-token=example-token"
 
     it "can build a URL from a path with url params", ->
       expect @request.buildUrl("project/:username/:project", {}, { project: "circleci", username: "jpstevens" })
-      .to.equal "https://circleci.com/api/v1/project/jpstevens/circleci?circle-token=example-token"
+      .to.equal "https://circleci.com/api/v1.1/project/jpstevens/circleci?circle-token=example-token"
 
   describe "building query object", ->
 
@@ -77,9 +77,9 @@ describe "CircleCI Request", ->
     before ->
       @route = { path: "/:param/endpoint", method: "GET", options: ["limit", "offset"] }
       @data = { param: "example", limit: 10, offset: 10 }
-      @expectedConfig = 
+      @expectedConfig =
         method: "GET"
-        url: "https://circleci.com/api/v1/example/endpoint?limit=10&offset=10&circle-token=example-token"
+        url: "https://circleci.com/api/v1.1/example/endpoint?limit=10&offset=10&circle-token=example-token"
         json: true
 
     it "builds the expected config object", ->
@@ -90,9 +90,9 @@ describe "CircleCI Request", ->
     before ->
       @route = { path: "/:param/endpoint", method: "GET", options: ["limit", "offset"] }
       @data = { param: "example", limit: 10, offset: 10 }
-      @expectedConfig = 
+      @expectedConfig =
         method: "GET"
-        url: "https://circleci.com/api/v1/example/endpoint?limit=10&offset=10&circle-token=example-token"
+        url: "https://circleci.com/api/v1.1/example/endpoint?limit=10&offset=10&circle-token=example-token"
         json: true
 
     beforeEach ->

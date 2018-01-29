@@ -80,7 +80,7 @@ Recent builds for a single project. Returns the build summary for each of the la
 #### Example Usage
 
 ```javascript
-ci.getBuilds({ username: "jpstevens", project: "circleci" })
+ci.getBuilds({ username: "jpstevens", project: "circleci", vcsType: "github" })
   .then(function(builds){
     for(var i=0; i < builds.length; i++) {
       console.log(builds[i].build_num); // logs the build number for each project
@@ -91,6 +91,7 @@ ci.getBuilds({ username: "jpstevens", project: "circleci" })
 #### Options
 - **username** [required] - The username for the project you wish to look up
 - **project** [required] - The project (repo) name you wish to look up
+- **vcsType** [required] - The vcsType github or bitbucket you wish to look up
 - **limit** [optional] - The number of builds to return. Maximum 100, defaults to 30)
 - **offset** [optional] - The API returns builds starting from this offset, defaults to 0)
 - **filter** [optional] - Show only successful/failed/running/pending builds
@@ -102,7 +103,7 @@ Recent builds for a single project filtered by a branch name. Returns the build 
 #### Example Usage
 
 ```javascript
-ci.getBranchBuilds({ username: "jpstevens", project: "circleci", branch: "master" })
+ci.getBranchBuilds({ username: "jpstevens", project: "circleci", vcsType: "github", branch: "master" })
   .then(function(builds){
     for(var i=0; i < builds.length; i++) {
       console.log(builds[i].build_num); // logs the build number for each project
@@ -113,6 +114,7 @@ ci.getBranchBuilds({ username: "jpstevens", project: "circleci", branch: "master
 #### Options
 - **username** [required] - The username for the project you wish to look up
 - **project** [required] - The project (repo) name you wish to look up
+- **vcsType** [required] - The vcsType github or bitbucket you wish to look up
 - **branch** [required] - The branch name you wish to use as filter
 - **limit** [optional] - The number of builds to return. Maximum 100, defaults to 30)
 - **offset** [optional] - The API returns builds starting from this offset, defaults to 0)
@@ -128,6 +130,7 @@ Full details for a single build. The response includes all of the fields from th
 ci.getBuild({
   username: "jpstevens",
   project: "circleci",
+  vcsType: "github",
   build_num: 1
 }).then(function(build){
   console.log(build);
@@ -137,6 +140,7 @@ ci.getBuild({
 #### Options
 - **username** [required] - The username for the project you wish to look up
 - **project** [required] - The project (repo) name you wish to look up
+- **vcsType** [required] - The vcsType github or bitbucket you wish to look up
 - **build_num** [required] - CircleCI build number
 
 ### startBuild
@@ -149,6 +153,7 @@ Triggers a new build, returns a summary of the build.
 ci.startBuild({
   username: "jpstevens",
   project: "circleci",
+  vcsType: "github",
   branch: "master"
 }).then(function(build){
   console.log(build);
@@ -158,6 +163,7 @@ ci.startBuild({
 #### Options
 - **username** [required] - The username for the project
 - **project** [required] - The project (repo) name
+- **vcsType** [required] - The vcsType github or bitbucket
 - **branch** [required] - The branch you wish to start the build for
 - **options** [optional] - Additional parameters you can pass in
 
@@ -167,6 +173,7 @@ ci.startBuild({
 ci.startBuild({
   username: "jpstevens",
   project: "circleci",
+  vcsType: "github",
   branch: "master",
   body:
     parallel: null
@@ -189,6 +196,7 @@ Triggers a new build with no branch, returns a summary of the build.
 ci.startBuildTag({
   username: "jpstevens",
   project: "circleci",
+  vcsType: "github",
   body:
     parallel: null
     revision: null
@@ -203,6 +211,7 @@ ci.startBuildTag({
 #### Options
 - **username** [required] - The username for the project
 - **project** [required] - The project (repo) name
+- **vcsType** [required] - The vcsType github or bitbucket
 - **options** [optional] - Additional parameters you can pass in
 
 
@@ -216,6 +225,7 @@ Cancels the build, returns a summary of the build.
 ci.cancelBuild({
   username: "jpstevens",
   project: "circleci",
+  vcsType: "github",
   build_num: 1
 }).then(function(build){
   console.log(build);
@@ -224,6 +234,7 @@ ci.cancelBuild({
 #### Options
 - **username** [required] - The username for the project you wish to look up
 - **project** [required] - The project (repo) name you wish to look up
+- **vcsType** [required] - The vcsType github or bitbucket you wish to look up
 - **build_num** [required] - CircleCI build number
 
 ### retryBuild
@@ -234,6 +245,7 @@ ci.cancelBuild({
 ci.retryBuild({
   username: "jpstevens",
   project: "circleci",
+  vcsType: "github",
   build_num: 1
 }).then(function(build){
   console.log(build);
@@ -243,6 +255,7 @@ ci.retryBuild({
 #### Options
 - **username** [required] - The username for the project you wish to look up
 - **project** [required] - The project (repo) name you wish to look up
+- **vcsType** [required] - The vcsType github or bitbucket you wish to look up
 - **build_num** [required] - CircleCI build number
 
 ### getBuildArtifacts
@@ -255,6 +268,7 @@ List the artifacts produced by a given build.
 ci.getBuildArtifacts({
   username: "jpstevens",
   project: "circleci",
+  vcsType: "github",
   build_num: 1
 }).then(function(artifacts){
   console.log(artifacts); // logs an array of artifacts
@@ -264,6 +278,7 @@ ci.getBuildArtifacts({
 #### Options
 - **username** [required] - The username for the project you wish to look up
 - **project** [required] - The project (repo) name you wish to look up
+- **vcsType** [required] - The vcsType github or bitbucket you wish to look up
 - **build_num** [required] - CircleCI build number
 
 
@@ -276,7 +291,8 @@ Clears the cache for a project
 ```javascript
 ci.clearBuildCache({
   username: "jpstevens",
-  project: "circleci"
+  project: "circleci",
+  vcsType: "github"
 }).then(function(res){
   console.log(res.status); // e.g. "build caches deleted"
 });
@@ -285,6 +301,7 @@ ci.clearBuildCache({
 #### Options
 - **username** [required] - The username for the project you wish to look up
 - **project** [required] - The project (repo) name you wish to look up
+- **vcsType** [required] - The vcsType github or bitbucket you wish to look up
 
 
 ### getEnvVars
@@ -296,7 +313,8 @@ Get the environment variables for a project
 ```javascript
 ci.getEnvVars({
   username: "jpstevens",
-  project: "circleci"
+  project: "circleci",
+  vcsType: "github"
 }).then(function(envvars){
   console.log(envvars); // logs an array of environment variables
 });
@@ -305,6 +323,7 @@ ci.getEnvVars({
 #### Options
 - **username** [required] - The username for the project you wish to look up
 - **project** [required] - The project (repo) name you wish to look up
+- **vcsType** [required] - The vcsType github or bitbucket you wish to look up
 
 
 ### getEnvVar
@@ -317,6 +336,7 @@ Get a single environment variable for a project by name
 ci.getEnvVar({
   username: "jpstevens",
   project: "circleci",
+  vcsType: "github",
   name: "NPM_TOKEN"
 }).then(function(envvar){
   console.log(envvar); // logs an object with the environment variable
@@ -326,6 +346,7 @@ ci.getEnvVar({
 #### Options
 - **username** [required] - The username for the project you wish to look up
 - **project** [required] - The project (repo) name you wish to look up
+- **vcsType** [required] - The vcsType github or bitbucket you wish to look up
 - **name** [required] - The name of the environment variable you wish to look up
 
 
@@ -339,6 +360,7 @@ Set a environment variable for a project by name and value
 ci.setEnvVar({
   username: "jpstevens",
   project: "circleci",
+  vcsType: "github",
   body: {
     name: "NPM_TOKEN",
     value: "123-456-789",
@@ -351,6 +373,7 @@ ci.setEnvVar({
 #### Options
 - **username** [required] - The username for the project you wish to add the environment variable to
 - **project** [required] - The project (repo) name you wish to add the environment variable to
+- **vcsType** [required] - The vcsType github or bitbucket you wish to add the environment variable to
 - **body** [required] - Object with the `name` and the `value` of the environment variable you wish to add to the project
 
 ### deleteEnvVar
@@ -363,6 +386,7 @@ Delete an environment variable from a project by name
 ci.deleteEnvVar({
   username: "jpstevens",
   project: "circleci",
+  vcsType: "github",
   name: "NPM_TOKEN"
 }).then(function(envvar){
   console.log(envvar); // logs an object with status of the deletion
@@ -372,6 +396,7 @@ ci.deleteEnvVar({
 #### Options
 - **username** [required] - The username for the project you wish to delete the environment variable from
 - **project** [required] - The project (repo) name you wish to delete the environment variable from
+- **vcsType** [required] - The vcsType github or bitbucket you wish to delete the environment variable from
 - **name** [required] - The name of the environment variable you wish to delete from the project
 
 

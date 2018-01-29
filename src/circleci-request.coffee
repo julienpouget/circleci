@@ -6,7 +6,7 @@ CircleCIResponse = require "./circleci-response"
 class CircleCIRequest
 
   constructor: (config = {}) ->
-    @url = "https://circleci.com/api/v1/"
+    @url = "https://circleci.com/api/v1.1/"
     @auth = config.auth
     @request = require "request"
 

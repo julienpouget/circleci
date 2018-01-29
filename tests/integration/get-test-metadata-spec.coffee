@@ -7,6 +7,7 @@ describe "getTestMetadata", ->
     @config =
       username: process.env.CIRCLE_USER
       project: process.env.CIRCLE_PROJECT
+      vcsType: process.env.CIRCLE_VCSTYPE
       build_num: "7"
 
   it "returns an array of the test metadata for a given build", (done) ->

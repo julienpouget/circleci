@@ -16,7 +16,7 @@
         config = {};
       }
       this.process = __bind(this.process, this);
-      this.url = "https://circleci.com/api/v1/";
+      this.url = "https://circleci.com/api/v1.1/";
       this.auth = config.auth;
       this.request = require("request");
     }

@@ -61,8 +61,8 @@ describe "CircleCI Client", ->
     describe "getBuilds", ->
 
       before ->
-        @route = { path: "/project/:username/:project", method: "GET", options: ["limit", "offset", "filter"] }
-        @options = { username: "jpstevens", project: "circleci", limit: 10, offset: 100, filter: 'running' }
+        @route = { path: "/project/:vcsType/:username/:project", method: "GET", options: ["limit", "offset", "filter"] }
+        @options = { username: "jpstevens", project: "circleci", vcsType:'github', limit: 10, offset: 100, filter: 'running' }
 
       it "gets the builds for a project", ->
           @circleci.getBuilds(@options)
@@ -75,8 +75,8 @@ describe "CircleCI Client", ->
     describe "getBranchBuilds", ->
 
       before ->
-        @route = { path: "/project/:username/:project/tree/:branch", method: "GET", options: ["limit", "offset", "filter"] }
-        @options = { username: "jpstevens", project: "circleci", branch: "master", limit: 10, offset: 100 }
+        @route = { path: "/project/:vcsType/:username/:project/tree/:branch", method: "GET", options: ["limit", "offset", "filter"] }
+        @options = { username: "jpstevens", project: "circleci", vcsType:'github', branch: "master", limit: 10, offset: 100 }
 
       it "gets the builds for a project", ->
           @circleci.getBranchBuilds(@options)
@@ -92,8 +92,8 @@ describe "CircleCI Client", ->
     describe "getBuild", ->
 
       before ->
-        @route = { path: "/project/:username/:project/:build_num", method: "GET" }
-        @options = { username: "jpstevens", project: "circleci", build_num: 123 }
+        @route = { path: "/project/:vcsType/:username/:project/:build_num", method: "GET" }
+        @options = { username: "jpstevens", project: "circleci", vcsType:'github', build_num: 123 }
 
       it "getting a single build for a project", ->
           @circleci.getBuild(@options)
@@ -106,8 +106,8 @@ describe "CircleCI Client", ->
     describe "getBuildArtifacts", ->
 
       before ->
-        @route = { path: "/project/:username/:project/:build_num/artifacts", method: "GET" }
-        @options = { username: "jpstevens", project: "circleci", build_num: 123 }
+        @route = { path: "/project/:vcsType/:username/:project/:build_num/artifacts", method: "GET" }
+        @options = { username: "jpstevens", project: "circleci", vcsType:'github', build_num: 123 }
 
       it "gets the artifacts for a build", ->
           @circleci.getBuildArtifacts(@options)
@@ -120,8 +120,8 @@ describe "CircleCI Client", ->
     describe "retryBuild", ->
 
       before ->
-        @route = { path: "/project/:username/:project/:build_num/retry", method: "POST" }
-        @options = { username: "jpstevens", project: "circleci", build_num: 123 }
+        @route = { path: "/project/:vcsType/:username/:project/:build_num/retry", method: "POST" }
+        @options = { username: "jpstevens", project: "circleci", vcsType:'github', build_num: 123 }
 
       it "retries the build", ->
           @circleci.retryBuild(@options)
@@ -134,8 +134,8 @@ describe "CircleCI Client", ->
     describe "cancelBuild", ->
 
       before ->
-        @route = { path: "/project/:username/:project/:build_num/cancel", method: "POST" }
-        @options = { username: "jpstevens", project: "circleci", build_num: 123 }
+        @route = { path: "/project/:vcsType/:username/:project/:build_num/cancel", method: "POST" }
+        @options = { username: "jpstevens", project: "circleci", vcsType:'github', build_num: 123 }
 
       it "cancels a build", ->
           @circleci.cancelBuild(@options)
@@ -148,8 +148,8 @@ describe "CircleCI Client", ->
     describe "startBuild", ->
 
       before ->
-        @route = { path: "/project/:username/:project/tree/:branch", method: "POST" }
-        @options = { username: "jpstevens", project: "circleci", branch: "master" }
+        @route = { path: "/project/:vcsType/:username/:project/tree/:branch", method: "POST" }
+        @options = { username: "jpstevens", project: "circleci", vcsType:'github', branch: "master" }
 
       it "starts a build", ->
           @circleci.startBuild(@options)
@@ -162,8 +162,8 @@ describe "CircleCI Client", ->
     describe "clearBuildCache", ->
 
       before ->
-        @route = { path: "/project/:username/:project/build-cache", method: "DELETE" }
-        @options = { username: "jpstevens", project: "circleci" }
+        @route = { path: "/project/:vcsType/:username/:project/build-cache", method: "DELETE" }
+        @options = { username: "jpstevens", project: "circleci",  vcsType:'github' }
 
       it "clears the cache for a project", ->
           @circleci.clearBuildCache(@options)
@@ -176,8 +176,8 @@ describe "CircleCI Client", ->
     describe "getTestMetadata", ->
 
      before ->
-       @route = { path: "/project/:username/:project/:build_num/tests", method: "GET" }
-       @options = { username: "jpstevens", project: "circleci", build_num: 123 }
+       @route = { path: "/project/:vcsType/:username/:project/:build_num/tests", method: "GET" }
+       @options = { username: "jpstevens", project: "circleci", vcsType:'github', build_num: 123 }
 
      it "gets the artifacts for a build", ->
          @circleci.getTestMetadata(@options)
@@ -190,8 +190,8 @@ describe "CircleCI Client", ->
     describe "getEnvVars", ->
 
      before ->
-       @route = { path: "/project/:username/:project/envvar", method: "GET" }
-       @options = { username: "jpstevens", project: "circleci" }
+       @route = { path: "/project/:vcsType/:username/:project/envvar", method: "GET" }
+       @options = { username: "jpstevens", project: "circleci", vcsType:'github' }
 
      it "gets the env vars for a project", ->
        @circleci.getEnvVars(@options)
@@ -204,8 +204,8 @@ describe "CircleCI Client", ->
     describe "getEnvVar", ->
 
      before ->
-       @route = { path: "/project/:username/:project/envvar/:name", method: "GET" }
-       @options = { username: "jpstevens", project: "circleci", name: "NPM_TOKEN" }
+       @route = { path: "/project/:vcsType/:username/:project/envvar/:name", method: "GET" }
+       @options = { username: "jpstevens", project: "circleci", vcsType:'github', name: "NPM_TOKEN" }
 
      it "gets and env var by name for a project", ->
        @circleci.getEnvVar(@options)
@@ -218,8 +218,8 @@ describe "CircleCI Client", ->
     describe "setEnvVar", ->
 
      before ->
-       @route = { path: "/project/:username/:project/envvar", method: "POST" }
-       @options = { username: "jpstevens", project: "circleci", body: { name: "NPM_TOKEN", value: "123-456-789" } }
+       @route = { path: "/project/:vcsType/:username/:project/envvar", method: "POST" }
+       @options = { username: "jpstevens", project: "circleci", vcsType:'github', body: { name: "NPM_TOKEN", value: "123-456-789" } }
 
      it "sets env var for a project", ->
        @circleci.setEnvVar(@options)
@@ -232,8 +232,8 @@ describe "CircleCI Client", ->
     describe "deleteEnvVar", ->
 
      before ->
-       @route = { path: "/project/:username/:project/envvar/:name", method: "DELETE" }
-       @options = { username: "jpstevens", project: "circleci", name: "NPM_TOKEN" }
+       @route = { path: "/project/:vcsType/:username/:project/envvar/:name", method: "DELETE" }
+       @options = { username: "jpstevens", project: "circleci", vcsType:'github', name: "NPM_TOKEN" }
 
      it "sets env var for a project", ->
        @circleci.deleteEnvVar(@options)
@@ -242,4 +242,3 @@ describe "CircleCI Client", ->
 
      it "throws an error when options are missing", ->
        expect(-> @circleci.deleteEnvVar()).to.throw
-

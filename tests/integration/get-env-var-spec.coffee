@@ -7,6 +7,7 @@ describe "getEnvVar", ->
     @config =
       username: process.env.CIRCLE_USER
       project: process.env.CIRCLE_PROJECT
+      vcsType: process.env.CIRCLE_VCSTYPE
       name: process.env.CIRCLE_USER
 
   it "returns an object of a given env var for a given project", (done) ->
